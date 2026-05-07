@@ -26,7 +26,7 @@ document.getElementById('consumo-form').addEventListener('submit', (event) => {
         }
         return response.json(); // Procesar la respuesta como JSON
     })
-    .then(data => {
+    .then(result => {
        console.log('Energy Consumption:', result);
 
 // Actualizar la interfaz del navegador con el resultado

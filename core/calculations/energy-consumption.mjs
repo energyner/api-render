@@ -8,7 +8,7 @@ export function calcularConsumoEnergetico(parametros) { // Ahora 'parametros' se
         // ¡IMPORTANTE! Ya no necesitas parseFloat aquí, ya se hizo en handleConsumo
         const resultado = potencia * horas; // Simplemente la operación matemática directa
         console.log("1.2 - Solved Calculation:", resultado);
-        return resultado * 1.1;
+        return resultado;
 
     } catch (error) {
         console.error("Error calculating energy consumption:", error);
