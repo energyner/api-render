@@ -1,0 +1,141 @@
+openapi: 3.0.0
+
+info:
+  title: Energyner API
+  version: 1.0.0
+  description: API para cálculo de consumo energético, huella de carbono y producción solar
+
+servers:
+  servers:
+  - url: http://localhost:3000/api/v1
+    description: Local server
+
+  - url: https://api-render.onrender.com/api/v1
+    description: Production server
+
+paths:
+
+  /consumo:
+    post:
+      summary: Calcular consumo energético
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsumoInput'
+      responses:
+        '200':
+          description: Resultado del consumo energético
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumoResponse'
+
+  /footprint:
+    post:
+      summary: Calcular huella de carbono
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FootprintInput'
+      responses:
+        '200':
+          description: Resultado de la huella de carbono
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FootprintResponse'
+
+  /solar:
+    post:
+      summary: Calcular producción solar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SolarInput'
+      responses:
+        '200':
+          description: Resultado de producción solar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolarResponse'
+
+components:
+
+  schemas:
+
+    # =========================
+    # INPUTS
+    # =========================
+
+    ConsumoInput:
+      type: object
+      required:
+        - potencia
+        - horas
+    properties:
+      potencia:
+      type: number
+      example: 350
+      horas:
+      type: number
+      example: 1
+
+
+    FootprintInput:
+      type: object
+      required:
+        - consumoEnergia
+      properties:
+        consumoEnergia:
+          type: number
+          example: 400
+
+    SolarInput:
+      type: object
+      required:
+        - paneles
+      properties:
+        paneles:
+          type: integer
+          example: 10
+
+    # =========================
+    # RESPONSES
+    # =========================
+
+    ConsumoResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        consumo:
+          type: number
+          example: 350
+
+    FootprintResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        huella:
+          type: number
+          example: 120.5
+
+    SolarResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        produccion:
+          type: number
+          example: 500

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "title": "Consumo Response Schema",
+
+  "type": "object",
+
+  "required": [
+    "success",
+    "data"
+  ],
+
+  "properties": {
+
+    "success": {
+      "type": "boolean"
+    },
+
+    "data": {
+
+      "type": "object",
+
+      "required": [
+        "consumo"
+      ],
+
+      "properties": {
+
+        "consumo": {
+          "type": "number"
+        }
+
+      },
+
+      "additionalProperties": false
+    }
+
+  },
+
+  "additionalProperties": false
+}

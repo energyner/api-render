@@ -1,0 +1,316 @@
+openapi: 3.0.0
+
+info:
+  title: API Render
+  version: 1.0.0
+  description: >
+    API modular para cálculo de consumo energético,
+    huella de carbono y producción solar.
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local Development Server
+
+  - url: https://api-render.onrender.com/api/v1
+    description: Production Server (Render)
+
+tags:
+  - name: Consumo
+    description: API de cálculo de consumo energético
+
+  - name: Footprint
+    description: API de cálculo de huella de carbono
+
+  - name: Solar
+    description: API de cálculo de producción solar
+
+paths:
+
+  # =====================================================
+  # CONSUMO
+  # =====================================================
+
+  /consumo:
+    post:
+      tags:
+        - Consumo
+
+      summary: Calcular consumo energético
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsumoInput'
+
+      responses:
+
+        '200':
+          description: Consumo calculado correctamente
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumoResponse'
+
+        '400':
+          description: Datos inválidos
+
+        '500':
+          description: Error interno del servidor
+
+  # =====================================================
+  # FOOTPRINT
+  # =====================================================
+
+  /footprint:
+    post:
+      tags:
+        - Footprint
+
+      summary: Calcular huella de carbono
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FootprintInput'
+
+      responses:
+
+        '200':
+          description: Huella calculada correctamente
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FootprintResponse'
+
+        '400':
+          description: Datos inválidos
+
+        '500':
+          description: Error interno del servidor
+
+  # =====================================================
+  # SOLAR
+  # =====================================================
+
+  /solar:
+    post:
+      tags:
+        - Solar
+
+      summary: Calcular producción solar
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SolarInput'
+
+      responses:
+
+        '200':
+          description: Producción solar calculada correctamente
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolarResponse'
+
+        '400':
+          description: Datos inválidos
+
+        '500':
+          description: Error interno del servidor
+
+# =====================================================
+# COMPONENTS
+# =====================================================
+
+components:
+
+  schemas:
+
+    # =====================================================
+    # INPUTS
+    # =====================================================
+
+    ConsumoInput:
+      type: object
+
+      required:
+        - potencia
+        - horas
+
+      properties:
+
+        potencia:
+          type: number
+          example: 350
+
+        horas:
+          type: number
+          example: 1
+
+    # -----------------------------------------------------
+
+    FootprintInput:
+      type: object
+
+      required:
+        - state
+        - elect
+
+      properties:
+
+        state:
+          type: string
+          example: FL
+
+        elect:
+          type: number
+          example: 350
+
+        gas:
+          type: number
+          example: 10
+
+        water:
+          type: number
+          example: 20
+
+        lpg:
+          type: number
+          example: 5
+
+        gn:
+          type: number
+          example: 10
+
+        fly:
+          type: number
+          example: 100
+
+        cogs:
+          type: number
+          example: 200
+
+        person:
+          type: integer
+          example: 2
+
+    # -----------------------------------------------------
+
+    SolarInput:
+      type: object
+
+      required:
+        - paneles
+
+      properties:
+
+        paneles:
+          type: integer
+          example: 10
+
+    # =====================================================
+    # RESPONSES
+    # =====================================================
+
+    ConsumoResponse:
+      type: object
+
+      properties:
+
+        success:
+          type: boolean
+          example: true
+
+        data:
+          type: object
+
+          properties:
+
+            consumo:
+              type: number
+              example: 385
+
+    # -----------------------------------------------------
+
+    FootprintResponse:
+      type: object
+
+      properties:
+
+        success:
+          type: boolean
+          example: true
+
+        data:
+          type: object
+
+          properties:
+
+            estado:
+              type: string
+              example: FL
+
+            total:
+              type: number
+              example: 706
+
+            per_capita:
+              type: number
+              example: 353
+
+            per_capita_estado:
+              type: number
+              example: 1600
+
+            promedioUSA:
+              type: number
+              example: 2700
+
+            promedioMundial:
+              type: number
+              example: 863
+
+            porcentajeEstado:
+              type: number
+              example: 22
+
+            porcentajeUSA:
+              type: number
+              example: 13
+
+            porcentajeMundial:
+              type: number
+              example: 41
+
+    # -----------------------------------------------------
+
+    SolarResponse:
+      type: object
+
+      properties:
+
+        success:
+          type: boolean
+          example: true
+
+        data:
+          type: object
+
+          properties:
+
+            produccion:
+              type: number
+              example: 500

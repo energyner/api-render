@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Solar Production API </title>
+     <!--Aplicando estilo a una estructura responsivo de tres columnas -->
+ <link rel="stylesheet" href="./style-solar.css" type="text/css"  >
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <h3> Solar Production API Calculator</h3>  
+<p>The scripts and exercises can be found in *Book 7, Part 7: Programming Step-by-Step and More*, available for purchase on Amazon.</p>
+</header>
+</header>
+<!--2 Divisiones responsives-->
+<div class="wrapper"> 
+    <div class="column"> <!-- Primera división -->
+       <h3 class="subcapitulo1">API in a Modular Architecture</h3>
+        <h3 class="subcapitulo2"> Basic Solar Production Calculator (in kWh)</h3>
+
+<p><b>JavaScript Algorithms developed in a Node.js and Express environment.</b><br>
+To learn more about this exercise, please refer to Book 5 — Instructional Guide —
+Programming Step-by-Step and Beyond.</p>
+
+<p><b>Solar Production API</b></p>
+<!--API Produccion Solar-->
+<form id="produccion-form">
+    <label for="area">Área: m2</label>
+    <input type="number" id="area" name="area" placeholder="area"  required>
+    <label for="irradiacion">Irradiation: W/h-m2</label>
+    <input type="number" id="irradiacion" name="irradiacion" placeholder="irradiacion"  required>
+    <label for="eficiencia">Efficiency: (0 y 1)</label>
+    <input type="number" id="eficiencia" name="eficiencia" placeholder="eficiencia" step="0.01" required>
+    <button type="submit">Calculate</button>
+</form>
+
+<h4> Solar Production Results, Wh:</h4>
+<p id="resultadoSolar"></p>
+
+</div>
+
+    <div class="column"> <!-- Second division -->
+        <h3 class="subcapitulo1"> Product Description</h3>
+        <p><b>Description </b></p>
+        <p>We have developed an initial version of this tool to 
+            facilitate the calculation of electricity production generated 
+            by solar collectors. Our goal is to progressively expand its structure, 
+            incorporating new properties and methods that enhance 
+            its functionality. This will improve its usefulness in decision‑making 
+            and in determining key parameters 
+            for evaluating the feasibility of using solar panels.</p>
+
+        <p><b>Usefulness</b></p>       
+        <p>We are aware that this type of tool, by simplifying complex calculations 
+            related to energy use, can have a significant impact 
+            both locally and globally. Its usefulness goes beyond process automation, 
+            as it contributes to resource optimization, facilitates decision‑making, 
+            and promotes sustainable development in various communities.</p>
+
+        <p><b>Benefits </b></p>
+        <p><b><i>a) Global Impact</i></b></p>
+        <p><b>• Promotion of renewable energy:</b> Provides access to accurate calculations, 
+                encouraging the adoption of solar energy in diverse communities.<br>
+             <b>• Resource optimization:</b> Allows governments, industries, and households 
+             to evaluate the feasibility of solar panels and improve their efficiency.<br>
+            <b>• Contribution to the fight against climate change:</b> By promoting the 
+                use of clean energy, it helps reduce dependence 
+                on fossil fuels and decrease carbon emissions.
+        </p>
+
+        <p><b><i>b) Benefits for the Local Community</i></b></p>
+        <p><b>• Empowerment of users and businesses:</b> Anyone, without advanced knowledge, 
+            can estimate their solar production and make better 
+            energy decisions.<br>
+        <b>• Investment optimization:</b> Helps households and businesses calculate 
+            more accurately the return on investment in solar systems.<br>
+        <b>• Promotion of sustainable development:</b> Cities can implement 
+            energy policies based on more accessible and concrete information.
+        </p>
+    </div>
+
+
+</div>
+<footer>
+<p>© 2026   APIs. A modular solution—expandable and scalable to new applications.</p>
+</footer>
+
+<script type="module" src="./nav-solar.mjs"></script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "title": "Footprint Response Schema",
+
+  "type": "object",
+
+  "required": [
+    "success",
+    "data"
+  ],
+
+  "properties": {
+
+    "success": {
+      "type": "boolean"
+    },
+
+    "data": {
+
+      "type": "object",
+
+      "required": [
+        "estado",
+        "total",
+        "per_capita"
+      ],
+
+      "properties": {
+
+        "estado": {
+          "type": "string"
+        },
+
+        "total": {
+          "type": "number"
+        },
+
+        "per_capita": {
+          "type": "number"
+        },
+
+        "per_capita_estado": {
+          "type": "number"
+        },
+
+        "promedioUSA": {
+          "type": "number"
+        },
+
+        "promedioMundial": {
+          "type": "number"
+        },
+
+        "porcentajeEstado": {
+          "type": "number"
+        },
+
+        "porcentajeUSA": {
+          "type": "number"
+        },
+
+        "porcentajeMundial": {
+          "type": "number"
+        }
+
+      },
+
+      "additionalProperties": true
+    }
+
+  },
+
+  "additionalProperties": false
+}

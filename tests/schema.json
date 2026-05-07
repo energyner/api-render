@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "title": "API Render Universal Response Schema",
+
+  "description": "Schema de validación global para API Render v1",
+
+  "type": "object",
+
+  "required": [
+    "success"
+  ],
+
+  "properties": {
+
+    "success": {
+      "type": "boolean"
+    },
+
+    "data": {
+
+      "type": "object",
+
+      "properties": {
+
+        "consumo": {
+          "type": "number"
+        },
+
+        "estado": {
+          "type": "string"
+        },
+
+        "total": {
+          "type": "number"
+        },
+
+        "per_capita": {
+          "type": "number"
+        },
+
+        "per_capita_estado": {
+          "type": "number"
+        },
+
+        "promedioUSA": {
+          "type": "number"
+        },
+
+        "promedioMundial": {
+          "type": "number"
+        },
+
+        "porcentajeEstado": {
+          "type": "number"
+        },
+
+        "porcentajeUSA": {
+          "type": "number"
+        },
+
+        "porcentajeMundial": {
+          "type": "number"
+        },
+
+        "produccion": {
+          "type": "number"
+        }
+
+      },
+
+      "additionalProperties": true
+    },
+
+    "error": {
+      "type": "string"
+    }
+
+  },
+
+  "additionalProperties": false
+}

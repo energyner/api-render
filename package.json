@@ -1,0 +1,47 @@
+{
+  "name": "api-render",
+  "version": "1.0.0",
+  "description": "API modular profesional desplegable en Render",
+  "main": "src/server/index.mjs",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "nodemon src/server/index.mjs",
+    "start": "node src/server/index.mjs",
+    "test:newman": "tests\\scripts\\run-tests.bat",
+  "test:local":
+    "newman run postman/v1/collection.json -e postman/v1/environment.local.json",
+  "test:production":
+    "newman run postman/v1/collection.json -e postman/v1/environment.production.json",
+  "test:report": "npx mkdirp reports && newman run postman/v1/collection.json -e postman/v1/environment.local.json -r cli,htmlextra --reporter-htmlextra-export reports/report.html",
+  "validate:openapi": "npx swagger-cli validate api/v1/swagger.yaml"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.1"
+  },
+  "devDependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "mkdirp": "^3.0.1",
+    "newman": "^6.2.2",
+    "newman-reporter-htmlextra": "^1.23.1",
+    "nodemon": "^3.1.14"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "express",
+    "render",
+    "openapi",
+    "testing",
+    "ci-cd"
+  ],
+  "author": "energyner",
+  "license": "MIT",
+  "directories": {
+    "test": "tests"
+  }
+}

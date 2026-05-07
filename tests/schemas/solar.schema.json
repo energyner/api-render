@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "title": "Solar Response Schema",
+
+  "type": "object",
+
+  "required": [
+    "success",
+    "data"
+  ],
+
+  "properties": {
+
+    "success": {
+      "type": "boolean"
+    },
+
+    "data": {
+
+      "type": "object",
+
+      "required": [
+        "produccion"
+      ],
+
+      "properties": {
+
+        "produccion": {
+          "type": "number"
+        }
+
+      },
+
+      "additionalProperties": false
+    }
+
+  },
+
+  "additionalProperties": false
+}

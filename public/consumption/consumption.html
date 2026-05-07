@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Energy Consumption API</title>
+     <!--Aplicando estilo a una estructura responsivo de tres columnas -->
+ <link rel="stylesheet" href="./style-consumption.css" type="text/css"  >
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <h3> APIs – Energy Consumption Calculator </h3>  
+  <p>The scripts and exercises can be found in Book 7, Part Seven — Programming Step by Step and More — available for purchase on Amazon.</p>
+</header>
+<!--2 Divisiones responsives-->
+<div class="wrapper"> 
+    <div class="column"> <!-- Primera división -->
+        <h3 class="subcapitulo1">Energy Consumption API</h3>
+
+
+<!--API Consumo Energetico-->
+<form id="consumo-form">
+    <label for="potencia">Power:kW</label>
+    <input type="number" id="potencia" name="potencia" placeholder="potencia" required>
+    <label for="horas">Hours:h</label>
+    <input type="number" id="horas" name="horas" placeholder="horas" required>
+    <button type="submit">Calculate</button>
+</form>
+
+<h4> Energy Consumption Result, kW/h:</h4>
+<p id="resultadoConsumo"></p>
+
+</div>
+
+    <div class="column"> <!-- Segunda división -->
+        <h3 class="subcapitulo1"> Energy Consumption Calculator. <br>
+                Facilitating Efficient Energy Management </h3>
+        <p><b>Description </b></p>
+        <p>The Energy Consumption API is a tool designed to calculate 
+          energy usage based on the power consumed by a device and its 
+            operating time. By entering key parameters such as power in kilowatts and 
+            hours of use, this API provides immediate results that allow individuals, 
+            companies, and institutions to evaluate their energy expenditure and optimize resource usage.</p>
+        <p><b>Usefulness</b></p> 
+        <p>This API provides fast and reliable calculations of energy consumption, 
+            enabling users to make timely decisions to reduce costs and improve 
+            energy efficiency. Its integration with management systems allows the analysis 
+            of consumption patterns, identification of optimization areas, and development of 
+            sustainable strategies to minimize environmental impact.  </p>
+        <p><b>Benefits </b></p>
+        <p>Access to accurate data on energy consumption encourages responsible practices 
+            and contributes to reducing energy waste. The Energy Consumption API 
+            helps users detect opportunities to improve efficiency, 
+            reduce operational costs, and adopt proactive measures in resource management. 
+            Additionally, its use in homes, businesses, and industries enables better planning 
+            of electrical consumption, supporting a transition toward more sustainable energy sources.  </p>
+            <p><b><i>a) Global Impact</i></b></p>
+            <p>The implementation of this API worldwide can transform the way 
+                energy is used and managed. It facilitates the adoption of efficient strategies 
+                in key sectors such as industry, transportation, and urban development, 
+                directly contributing to reducing energy demand and carbon emissions. By providing accessible information on electrical consumption, it helps governments and organizations implement energy-saving policies and promote the use of renewable energy.  </p>
+            <p><b><i>b) Benefits for the Local Community</i></b></p>
+            <p>At the local level, this API enables families and businesses to better understand 
+                their electrical consumption and take measures to optimize it. It helps reduce electricity bills 
+                through efficient management of electrical devices and allows small businesses to improve profitability 
+                by minimizing unnecessary costs. It also promotes energy education within communities, raising awareness 
+                about the environmental impact of electricity consumption and the importance of adopting more sustainable habits.  </p>
+
+        <p><b>Conclusion</b></p>
+        <p></p>
+        <p><b>Invitation to Collaborators!</b></p>
+       <p>To expand the reach and functionality of the Energy Consumption API in its basic version, 
+        we invite developers, energy-efficiency experts, and data professionals to contribute improvements 
+        that enhance its performance. Through the incorporation of new features such as predictive analysis, 
+        investment evaluation, compatibility with smart sensors, or integration with smart grids, 
+        we can make this tool even more powerful. All improvements will help strengthen its impact 
+        on global energy consumption management.  </p>
+
+ </div>
+
+</div>
+<footer>
+   <p>© 2026   APIs. A modular solution—expandable and scalable to new applications.</p>
+</footer>
+
+<script type="module" src="./nav-consumption.mjs"></script>
+
+</body>
+</html>

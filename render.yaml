@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: api-render
+    runtime: node
+    plan: free
+
+    buildCommand: npm install
+
+    startCommand: node src/server/index.mjs
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+    healthCheckPath: /health

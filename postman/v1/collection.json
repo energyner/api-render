@@ -1,0 +1,430 @@
+{
+  "info": {
+    "name": "API Render v1",
+    "description": "Colección de testing profesional para API Render",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "{{protocol}}://{{host}}:{{port}}/api/v1"
+    }
+  ],
+
+  "item": [
+
+    {
+      "name": "System",
+
+      "item": [
+
+        {
+          "name": "Health Check",
+
+          "request": {
+            "method": "GET",
+
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/health",
+              "host": ["{{host}}"],
+              "port": "{{port}}",
+              "path": ["health"]
+            }
+          },
+
+          "event": [
+            {
+              "listen": "test",
+
+              "script": {
+                "exec": [
+
+                  "// =============================",
+                  "// STATUS",
+                  "// =============================",
+
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+
+                  "// =============================",
+                  "// RESPONSE JSON",
+                  "// =============================",
+
+                  "const json = pm.response.json();",
+
+                  "pm.test('Service online', () => {",
+                  "  pm.expect(json.status).to.eql('ok');",
+                  "});",
+
+                  "// =============================",
+                  "// PERFORMANCE",
+                  "// =============================",
+
+                  "pm.test('Response time < 500ms', () => {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});",
+
+                  "// =============================",
+                  "// HEADERS",
+                  "// =============================",
+
+                  "pm.test('Content-Type JSON', () => {",
+                  "  pm.response.to.have.header('Content-Type');",
+                  "});"
+
+                ]
+              }
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+
+    {
+      "name": "Consumo API",
+
+      "item": [
+
+        {
+          "name": "Calcular Consumo Energético",
+
+          "request": {
+
+            "method": "POST",
+
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"potencia\":350,\n  \"horas\":1\n}"
+            },
+
+            "url": {
+              "raw": "{{base_url}}/consumo",
+              "host": ["{{base_url}}"],
+              "path": ["consumo"]
+            }
+          },
+
+          "event": [
+            {
+              "listen": "test",
+
+              "script": {
+                "exec": [
+
+                  "// =============================",
+                  "// STATUS",
+                  "// =============================",
+
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+
+                  "// =============================",
+                  "// RESPONSE JSON",
+                  "// =============================",
+
+                  "const json = pm.response.json();",
+
+                  "pm.test('Success true', () => {",
+                  "  pm.expect(json.success).to.eql(true);",
+                  "});",
+
+                  "pm.test('Tiene data.consumo', () => {",
+                  "  pm.expect(json.data.consumo).to.exist;",
+                  "});",
+
+                  "// =============================",
+                  "// SCHEMA VALIDATION",
+                  "// =============================",
+
+                  "const schema = {",
+                  "  type: 'object',",
+                  "  required: ['success', 'data'],",
+                  "  properties: {",
+                  "    success: { type: 'boolean' },",
+                  "    data: {",
+                  "      type: 'object',",
+                  "      required: ['consumo'],",
+                  "      properties: {",
+                  "        consumo: { type: 'number' }",
+                  "      }",
+                  "    }",
+                  "  }",
+                  "};",
+
+                  "pm.test('Schema válido', () => {",
+                  "  pm.response.to.have.jsonSchema(schema);",
+                  "});",
+
+                  "// =============================",
+                  "// PERFORMANCE",
+                  "// =============================",
+
+                  "pm.test('Response time < 500ms', () => {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});",
+
+                  "// =============================",
+                  "// HEADERS",
+                  "// =============================",
+
+                  "pm.test('Content-Type JSON', () => {",
+                  "  pm.response.to.have.header('Content-Type');",
+                  "});"
+
+                ]
+              }
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+
+    {
+      "name": "Footprint API",
+
+      "item": [
+
+        {
+          "name": "Calcular Huella de Carbono",
+
+          "request": {
+
+            "method": "POST",
+
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\":\"FL\",\n  \"elect\":350,\n  \"gas\":10,\n  \"water\":20,\n  \"lpg\":5,\n  \"gn\":10,\n  \"fly\":100,\n  \"cogs\":200,\n  \"person\":2\n}"
+            },
+
+            "url": {
+              "raw": "{{base_url}}/footprint",
+              "host": ["{{base_url}}"],
+              "path": ["footprint"]
+            }
+          },
+
+          "event": [
+            {
+              "listen": "test",
+
+              "script": {
+                "exec": [
+
+                  "// =============================",
+                  "// STATUS",
+                  "// =============================",
+
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+
+                  "// =============================",
+                  "// RESPONSE JSON",
+                  "// =============================",
+
+                  "const json = pm.response.json();",
+
+                  "pm.test('Success true', () => {",
+                  "  pm.expect(json.success).to.eql(true);",
+                  "});",
+
+                  "pm.test('Tiene data.total', () => {",
+                  "  pm.expect(json.data.total).to.exist;",
+                  "});",
+
+                  "pm.test('Tiene data.estado', () => {",
+                  "  pm.expect(json.data.estado).to.exist;",
+                  "});",
+
+                  "// =============================",
+                  "// SCHEMA VALIDATION",
+                  "// =============================",
+
+                  "const schema = {",
+                  "  type: 'object',",
+                  "  required: ['success', 'data'],",
+                  "  properties: {",
+                  "    success: { type: 'boolean' },",
+                  "    data: {",
+                  "      type: 'object',",
+                  "      required: ['estado', 'total'],",
+                  "      properties: {",
+                  "        estado: { type: 'string' },",
+                  "        total: { type: 'number' }",
+                  "      }",
+                  "    }",
+                  "  }",
+                  "};",
+
+                  "pm.test('Schema válido', () => {",
+                  "  pm.response.to.have.jsonSchema(schema);",
+                  "});",
+
+                  "// =============================",
+                  "// PERFORMANCE",
+                  "// =============================",
+
+                  "pm.test('Response time < 500ms', () => {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});",
+
+                  "// =============================",
+                  "// HEADERS",
+                  "// =============================",
+
+                  "pm.test('Content-Type JSON', () => {",
+                  "  pm.response.to.have.header('Content-Type');",
+                  "});"
+
+                ]
+              }
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+
+    {
+      "name": "Solar API",
+
+      "item": [
+
+        {
+          "name": "Calcular Producción Solar",
+
+          "request": {
+
+            "method": "POST",
+
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paneles\":10\n}"
+            },
+
+            "url": {
+              "raw": "{{base_url}}/solar",
+              "host": ["{{base_url}}"],
+              "path": ["solar"]
+            }
+          },
+
+          "event": [
+            {
+              "listen": "test",
+
+              "script": {
+                "exec": [
+
+                  "// =============================",
+                  "// STATUS",
+                  "// =============================",
+
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+
+                  "// =============================",
+                  "// RESPONSE JSON",
+                  "// =============================",
+
+                  "const json = pm.response.json();",
+
+                  "pm.test('Success true', () => {",
+                  "  pm.expect(json.success).to.eql(true);",
+                  "});",
+
+                  "// =============================",
+                  "// PERFORMANCE",
+                  "// =============================",
+
+                  "pm.test('Response time < 500ms', () => {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});",
+
+                  "// =============================",
+                  "// HEADERS",
+                  "// =============================",
+
+                  "pm.test('Content-Type JSON', () => {",
+                  "  pm.response.to.have.header('Content-Type');",
+                  "});"
+
+                ]
+              }
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+
+    {
+      "name": "Negative Testing",
+
+      "item": [
+
+        {
+          "name": "Endpoint inexistente",
+
+          "request": {
+
+            "method": "GET",
+
+            "url": {
+              "raw": "{{base_url}}/invalid",
+              "host": ["{{base_url}}"],
+              "path": ["invalid"]
+            }
+          },
+
+          "event": [
+            {
+              "listen": "test",
+
+              "script": {
+                "exec": [
+
+                  "// =============================",
+                  "// STATUS 404",
+                  "// =============================",
+
+                  "pm.test('Status 404', () => pm.response.to.have.status(404));"
+
+                ]
+              }
+            }
+          ]
+        }
+
+      ]
+    }
+
+  ]
+}
