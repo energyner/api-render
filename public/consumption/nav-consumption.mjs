@@ -27,11 +27,11 @@ document.getElementById('consumo-form').addEventListener('submit', (event) => {
         return response.json(); // Procesar la respuesta como JSON
     })
     .then(data => {
-        console.log('Energy Consumption:', data);
+       console.log('Energy Consumption:', result);
 
 // Actualizar la interfaz del navegador con el resultado
-        const resultadoConsumo = document.getElementById('resultadoConsumo');
-        resultadoConsumo.textContent = `Calculated Energy Consumption: ${data.consumo} kWh`;
+       const resultadoConsumo= document.getElementById('resultadoConsumo');
+        resultadoConsumo.textContent =`Calculated Energy Consumption: ${result.data.consumo} kWh`;
         resultadoConsumo.style.color = "green"; // Estilo opcional para destacar el texto
     })
     .catch(error => {
